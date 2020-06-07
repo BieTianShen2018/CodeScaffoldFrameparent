@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<settings>
+<servers>
+    <server>
+        <id>rdc-releases</id>
+        <username>kXrRLJ</username>
+        <password>Boh3PsVar3</password>
+    </server>
+    <server>
+        <id>rdc-snapshots</id>
+        <username>kXrRLJ</username>
+        <password>Boh3PsVar3</password>
+    </server>
+</servers>
+<!-- mirrors settings-->
+  <mirrors>
+   <mirror>
+  <id>alimaven</id>
+  <name>aliyun maven</name>
+  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+  <mirrorOf>central</mirrorOf>        
+</mirror> 
+  </mirrors>
+  <!-- ======================================================================== -->
+  <!--  Profiles                                                                -->
+  <!-- ======================================================================== -->
+  <profiles>
+  <profile>
+    <id>rdc-private-repo</id>
+    <repositories>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/79907-release-m2RyXu/</url>
+        </repository>
+        <repository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/79907-snapshot-hR04Wp/</url>
+        </repository>
+    </repositories>
+</profile>
+ <profile>
+ 
+     <id>nexus</id>
+     <repositories>
+         <repository>
+             <id>central</id>
+             <url>http://repo1.maven.org/maven2</url>
+             <releases>
+                 <enabled>true</enabled>
+             </releases>
+             <snapshots>
+                 <enabled>true</enabled>
+             </snapshots>
+         </repository>
+     </repositories>
+     <pluginRepositories>
+         <pluginRepository>
+             <id>central</id>
+             <url>http://repo1.maven.org/maven2</url>
+             <releases>
+                 <enabled>true</enabled>
+             </releases>
+             <snapshots>
+                 <enabled>true</enabled>
+             </snapshots>
+         </pluginRepository>
+     </pluginRepositories>
+ </profile>
+ <profile>
+     <id>edas.oss.repo</id>
+     <repositories>
+         <repository>
+             <id>edas-oss-central</id>
+             <name>taobao mirror central</name>
+             <url>http://edas-public.oss-cn-hangzhou.aliyuncs.com/repository</url>
+             <snapshots>
+                 <enabled>true</enabled>
+             </snapshots>
+             <releases>
+                 <enabled>true</enabled>
+             </releases>
+         </repository>
+         </repositories>
+     <pluginRepositories>
+         <pluginRepository>
+             <id>edas-oss-plugin-central</id>
+             <url>http://edas-public.oss-cn-hangzhou.aliyuncs.com/repository</url>
+             <snapshots>
+                 <enabled>true</enabled>
+             </snapshots>
+             <releases>
+                 <enabled>true</enabled>
+             </releases>
+         </pluginRepository>
+     </pluginRepositories>
+ </profile>
+</profiles>
+<activeProfiles>
+ <activeProfile>nexus</activeProfile>
+ <activeProfile>edas.oss.repo</activeProfile>
+  <activeProfile>rdc-private-repo</activeProfile>
+</activeProfiles>
+</settings>

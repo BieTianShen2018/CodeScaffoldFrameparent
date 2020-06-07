@@ -1,0 +1,3 @@
+# Project exclude paths
+/up-center-boot/target/
+/up-center-share/target/

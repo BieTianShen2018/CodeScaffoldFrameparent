@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="up-center-domain" />
+        <module name="wrapPreAfter" />
+        <module name="up-center-boot" />
+        <module name="wrap-spring-boot-starter" />
+        <module name="up-center-infrastructure" />
+        <module name="up-center-share" />
+        <module name="up-center-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wrapPreAfter" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="up-center-api" options="-parameters" />
+      <module name="up-center-boot" options="-parameters" />
+      <module name="up-center-domain" options="-parameters" />
+      <module name="up-center-infrastructure" options="-parameters" />
+      <module name="up-center-share" options="-parameters" />
+      <module name="wrap-spring-boot-starter" options="-parameters" />
+      <module name="wrapPreAfter" options="-parameters" />
+    </option>
+  </component>
+</project>
