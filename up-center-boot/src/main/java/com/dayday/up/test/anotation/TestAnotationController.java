@@ -1,12 +1,9 @@
 package com.dayday.up.test.anotation;
 
 import com.dayday.up.costom.anotation.OldBoy;
-import com.example.wrapspringbootstarter.service.WrapService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,8 +14,8 @@ import javax.annotation.Resource;
 @RestController
 public class TestAnotationController {
 
-    @Resource
-    WrapService test;
+//    @Resource
+//    WrapService wrapTest;
 
     @GetMapping("/testAnotionOne")
     @OldBoy
@@ -27,14 +24,14 @@ public class TestAnotationController {
         return String.format("Hello %s!", name);
     }
 
-    @GetMapping("/testAnotionOne")
-    @OldBoy
-    public String wrap(@RequestParam(value = "name", defaultValue = "World") String name) {
-        System.out.println(" controller oldboy is coming");
-
-      String returnValue=  test.wrap("  nishuona???  ");
-
-        return String.format("Hello %s!", returnValue);
-    }
+//    @GetMapping("/testAnotionOne")
+//    @OldBoy
+//    public String wrap(@RequestParam(value = "name", defaultValue = "World") String name) {
+//        System.out.println(" controller oldboy is coming");
+//
+//      String returnValue=  wrapTest.wrap("  nishuona???  ");
+//
+//        return String.format("Hello %s!", returnValue);
+//    }
 
 }

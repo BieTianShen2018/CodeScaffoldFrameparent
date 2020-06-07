@@ -9,7 +9,6 @@ import lombok.Data;
  * Date: 2020-06-07
  * Time: 23:07
  */
-//@ALLArgsConstructor
 @Data
 @AllArgsConstructor()
 public class WrapService {
