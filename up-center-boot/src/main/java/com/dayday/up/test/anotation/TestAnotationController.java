@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  * User: admin
  * Date: 2020-06-01
  * Time: 22:58
+ * @author admin
  */
 @RestController
 public class TestAnotationController {
 
 //    @Resource
 //    WrapService wrapTest;
+
 
     @GetMapping("/testAnotionOne")
     @OldBoy
@@ -24,13 +26,11 @@ public class TestAnotationController {
         return String.format("Hello %s!", name);
     }
 
-//    @GetMapping("/testAnotionOne")
+//    @GetMapping("/testMyStarter")
 //    @OldBoy
 //    public String wrap(@RequestParam(value = "name", defaultValue = "World") String name) {
-//        System.out.println(" controller oldboy is coming");
-//
-//      String returnValue=  wrapTest.wrap("  nishuona???  ");
-//
+//        System.out.println("wrap controller  is coming");
+//        String returnValue = wrapTest.wrap("  ni shuo na :"+name);
 //        return String.format("Hello %s!", returnValue);
 //    }
 

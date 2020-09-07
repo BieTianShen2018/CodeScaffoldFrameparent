@@ -5,7 +5,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/wrap-spring-boot-starter/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

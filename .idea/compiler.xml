@@ -10,13 +10,14 @@
         <module name="up-center-domain" />
         <module name="wrapPreAfter" />
         <module name="up-center-boot" />
-        <module name="wrap-spring-boot-starter" />
+        <module name="up-center-demo" />
         <module name="up-center-infrastructure" />
         <module name="up-center-share" />
         <module name="up-center-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="wrap-spring-boot-starter" target="1.8" />
       <module name="wrapPreAfter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -24,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="up-center-api" options="-parameters" />
       <module name="up-center-boot" options="-parameters" />
+      <module name="up-center-demo" options="-parameters" />
       <module name="up-center-domain" options="-parameters" />
       <module name="up-center-infrastructure" options="-parameters" />
       <module name="up-center-share" options="-parameters" />
