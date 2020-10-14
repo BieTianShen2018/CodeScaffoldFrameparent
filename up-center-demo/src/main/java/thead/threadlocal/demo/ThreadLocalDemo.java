@@ -5,9 +5,10 @@ package thead.threadlocal.demo;
  * User: admin
  * Date: 2020-09-07
  * Time: 11:26
+ *
  */
 
-import com.dayday.up.myThread.threadPoolUtil.ThreadPoolsUtil;
+import com.dayday.up.my.thread.threadpoolutil.ThreadPoolsUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,9 +18,9 @@ import java.util.concurrent.ExecutorService;
 
 public class ThreadLocalDemo {
 
-    public static final int CONCURRENT = 1000;
+    private static final int CONCURRENT = 1000;
 
-    static volatile ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>(){
+    private static  ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>(){
         @Override
         protected void finalize() throws Throwable {
             super.finalize();
@@ -27,10 +28,10 @@ public class ThreadLocalDemo {
         }
     };
 
-    static volatile CountDownLatch latch = new CountDownLatch(CONCURRENT);
+    private static  CountDownLatch latch = new CountDownLatch(CONCURRENT);
 
     public static class ParseDate implements Runnable {
-        int i = 0;
+        int i ;
 
         public ParseDate(int i) {
             this.i = i;
@@ -59,7 +60,7 @@ public class ThreadLocalDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final ExecutorService executorService = ThreadPoolsUtil.executor;
+        final ExecutorService executorService = ThreadPoolsUtil.executorServiceWithFactory;
         for (int i = 0; i < 1000; i++) {
             executorService.execute(new ParseDate(i));
         }

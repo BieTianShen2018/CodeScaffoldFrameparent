@@ -1,4 +1,6 @@
-package com.dayday.up.myThread.threadPoolUtil;
+package com.dayday.up.my.thread.threadpoolutil;
+
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,8 +23,32 @@ public class ThreadPoolsUtil {
     /**  KEEP_ALIVE_TIME的单位 **/
     public  static final int QUEUE_CAPACITY=10;
 
+    /**
+     14      * 自定义线程名称,方便的出错的时候溯源
+     15      */
+    private static ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("up-center-pool-%d").build();
+
+    /**
+       * corePoolSize    线程池核心池的大小
+       * maximumPoolSize 线程池中允许的最大线程数量
+       * keepAliveTime   当线程数大于核心时，此为终止前多余的空闲线程等待新任务的最长时间
+       * unit            keepAliveTime 的时间单位
+       * workQueue       用来储存等待执行任务的队列
+       * threadFactory   创建线程的工厂类
+       * handler         拒绝策略类,当线程池数量达到上线并且workQueue队列长度达到上限时就需要对到来的任务做拒绝处理
+       */
+    public static final ExecutorService executorServiceWithFactory = new ThreadPoolExecutor(
+                       CORE_POOL_SIZE,
+                        MAX_POOL_SIZE,
+                        KEEP_ALIVE_TIME,
+                         TimeUnit.MILLISECONDS,
+                         new LinkedBlockingQueue<>(1024),
+                         namedThreadFactory,
+                     new ThreadPoolExecutor.AbortPolicy()
+            );
+
     /**使用阿里巴巴推荐的创建线程池的方式 通过ThreadPoolExecutor构造函数自定义参数创建 **/
-    public static final ThreadPoolExecutor executor = new ThreadPoolExecutor(
+    public static final ExecutorService executorServiceNoFactory = new ThreadPoolExecutor(
                 CORE_POOL_SIZE,
                 MAX_POOL_SIZE,
                 KEEP_ALIVE_TIME,
@@ -43,7 +69,8 @@ public class ThreadPoolsUtil {
         Callable<String> callable = new MyCallable();
         for (int i = 0; i < 10; i++) {
             //提交任务到线程池
-            Future<String> future = executor.submit(callable); // Callable任务要使用submit提交，会返回一个Future对象
+            Future<String> future = executorServiceWithFactory.submit(callable);
+            // Callable任务要使用submit提交，会返回一个Future对象
             //将返回值 future 添加到 list，我们可以通过 future 获得 执行 Callable 得到的返回值
             futureList.add(future);
         }
@@ -55,7 +82,7 @@ public class ThreadPoolsUtil {
             }
         }
         //关闭线程池
-        executor.shutdown();
+        executorServiceWithFactory.shutdown();
     }
 }
 class MyCallable implements Callable<String> {
